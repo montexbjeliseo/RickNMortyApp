@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+}
+
+main {
+  width: 90%;
+  margin: auto;
+}

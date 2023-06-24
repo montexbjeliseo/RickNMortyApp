@@ -1,0 +1,32 @@
+.header {
+    border: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 70px;
+    background-image: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.logo {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: bolder;
+}
+
+.navigation {
+    list-style: none;
+    display: flex;
+}
+
+.navElement {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bolder;
+    padding: 0 10px;
+}
