@@ -30,3 +30,7 @@
     font-weight: bolder;
     padding: 0 10px;
 }
+
+.active a {
+    color: aqua;
+}

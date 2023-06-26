@@ -20,9 +20,9 @@ export const Pagination = (info: PaginationProps) => {
       <>
         {list.map((p) => {
           return (
-            <li>
+            <li key={`pagination-${p}`}>
               <a
-                href="javascript:void(0);"
+                href={`?page=${p}`}
                 onClick={(e) => {
                   info.onGoto(p);
                 }}
@@ -42,7 +42,7 @@ export const Pagination = (info: PaginationProps) => {
       <ul>
         <li>
           <a
-            href="javascript:void(0);"
+            href="#"
             onClick={() => {
               info.onPreview();
             }}
@@ -53,7 +53,7 @@ export const Pagination = (info: PaginationProps) => {
         {generateLinks()}
         <li>
           <a
-            href="javascript:void(0);"
+            href="#"
             onClick={() => {
               info.onNext();
             }}
