@@ -10,7 +10,7 @@ function EpisodeCard(props: any) {
   const episode = props.episode;
   return (
     <div className={styles.episodeCard}>
-      <p className={styles.nameText}>{episode.name}</p>
+      <h1>{episode.name}</h1>
       <p className={styles.episodeText}>Episodio: {episode.episode}</p>
       <p>Al aire: {episode.air_date}</p>
       <Link className={styles.learnMore} to={`/episodes/${episode.id}`}>

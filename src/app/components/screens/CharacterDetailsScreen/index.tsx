@@ -1,5 +1,6 @@
 import { useGetData } from "../../../hooks/useGetDataR";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import styles from "./styles.module.css";
 
 function CharacterDetailsScreen() {
   const { id } = useParams();
@@ -31,6 +32,7 @@ function CharacterDetailsScreen() {
     <main>
       {data && (
         <>
+          <Link className={styles.backLink} to="/characters">Volver atrás</Link>
           <h1>Personaje: {data.name}</h1>
           <img src={data.image} alt="" />
           <p>
