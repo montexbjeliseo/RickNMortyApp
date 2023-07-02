@@ -43,7 +43,7 @@ function PlaceDetailsScreen() {
             <b>Type:</b> {data.type}
           </p>
           <p>
-            <b>Type:</b> {data.type}
+            <b>Created:</b> {data.created}
           </p>
         </>
       )}
