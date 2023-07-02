@@ -20,6 +20,8 @@
 .pagination ul li a {
     color: #fff;
     text-decoration: none;
+    cursor: pointer;
+    user-select: none;
 }
 
 .pagination ul li a.active {

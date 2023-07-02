@@ -16,6 +16,7 @@ function CharactersScreen() {
     try {
       const res = await fetch(`https://rickandmortyapi.com/api/character?page=${currentPage}`);
       const json = await res.json();
+      console.log(json.info);
 
       setPages(json.info.pages);
       setCharacters(json.results);

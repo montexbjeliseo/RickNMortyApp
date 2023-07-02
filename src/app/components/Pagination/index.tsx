@@ -22,7 +22,6 @@ export const Pagination = (info: PaginationProps) => {
           return (
             <li key={`pagination-${p}`}>
               <a
-                href={`?page=${p}`}
                 onClick={(e) => {
                   info.onGoto(p);
                 }}
@@ -42,7 +41,6 @@ export const Pagination = (info: PaginationProps) => {
       <ul>
         <li>
           <a
-            href="#"
             onClick={() => {
               info.onPreview();
             }}
@@ -53,7 +51,6 @@ export const Pagination = (info: PaginationProps) => {
         {generateLinks()}
         <li>
           <a
-            href="#"
             onClick={() => {
               info.onNext();
             }}

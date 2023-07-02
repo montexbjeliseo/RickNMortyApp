@@ -1,4 +1,4 @@
-import useGetData from "../../../hooks/useGetData";
+import { useGetData } from "../../../hooks/useGetDataR";
 import { useParams } from "react-router-dom";
 
 function CharacterDetailsScreen() {
