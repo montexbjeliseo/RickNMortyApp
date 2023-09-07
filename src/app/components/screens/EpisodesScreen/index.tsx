@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import { Pagination } from "../../Pagination";
 import EpisodeCard from "../../EpisodeCard";
+import { EpisodeType } from "../../../types";
 
 function EpisodesScreen() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pages, setPages] = useState(0);
-  const [episodes, setEpisodes] = useState();
+  const [episodes, setEpisodes] = useState<EpisodeType[]>();
 
   useEffect(() => {
     requestEpisodes();

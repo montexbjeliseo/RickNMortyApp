@@ -22,7 +22,7 @@ export const Pagination = (info: PaginationProps) => {
           return (
             <li key={`pagination-${p}`}>
               <a
-                onClick={(e) => {
+                onClick={() => {
                   info.onGoto(p);
                 }}
                 className={info.currentPage == p ? styles.active : ""}

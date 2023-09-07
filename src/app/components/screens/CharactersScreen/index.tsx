@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import CharacterCard from "../../CharacterCard";
 import { Pagination } from "../../Pagination";
+import { CharacterType } from "../../../types";
 
 function CharactersScreen() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pages, setPages] = useState(0);
-  const [characters, setCharacters] = useState();
+  const [characters, setCharacters] = useState<CharacterType[]>();
 
   useEffect(() => {
     requestCharacters();

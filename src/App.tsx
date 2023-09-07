@@ -8,10 +8,14 @@ import EpisodeDetailsScreen from "./app/components/screens/EpisodeDetailsScreen"
 import PlaceDetailsScreen from "./app/components/screens/PlaceDetailsScreen";
 import NotFound from "./app/components/screens/NotFound";
 import Layout from "./app/components/Layout";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<HomeScreen />}></Route>
@@ -31,6 +35,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

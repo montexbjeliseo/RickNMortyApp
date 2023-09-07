@@ -1,15 +1,23 @@
-import { useGetData } from "../../../hooks/useGetDataR";
 import { Link, useParams } from "react-router-dom";
 import styles from "./styles.module.css";
+import { useQuery } from "react-query";
 
 function CharacterDetailsScreen() {
   const { id } = useParams();
 
-  const { data, error, loading } = useGetData(
-    `https://rickandmortyapi.com/api/character/${id}`
-  );
+  const { isLoading, error, data } = useQuery({
+    queryKey: ['characterDetailsData'+id],
+    queryFn: () =>
+      fetch(`https://rickandmortyapi.com/api/character/${id}`).then(
+        (res) => res.json(),
+      ),
+  });
 
-  if (loading) {
+  // const { data, error, loading } = useGetData(
+  //   `https://rickandmortyapi.com/api/character/${id}`
+  // );
+
+  if (isLoading) {
     return (
       <main>
         <h1>Cargando...</h1>
@@ -21,12 +29,12 @@ function CharacterDetailsScreen() {
     return (
       <main>
         <h1>Error en la petición!</h1>
-        <p>{error}</p>
+        <p>{""+error}</p>
       </main>
     );
   }
 
-  console.log(data, error, loading);
+  console.log(data, error, isLoading);
 
   return (
     <main>

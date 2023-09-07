@@ -1,9 +1,10 @@
+import { CharacterType } from "../../types";
 import styles from "./styles.module.css";
 
 import { Link } from "react-router-dom";
 
 type CharacterProp = {
-  character: any;
+  character: CharacterType;
 };
 
 function CharacterCard(props: CharacterProp) {

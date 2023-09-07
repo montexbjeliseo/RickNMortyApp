@@ -1,13 +1,13 @@
+import React from "react";
+import { EpisodeType } from "../../types";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 
 type EpisodeCardProps = {
-  id: number;
-  episode: any;
+  episode: EpisodeType;
 };
 
-function EpisodeCard(props: any) {
-  const episode = props.episode;
+export const EpisodeCard: React.FC<EpisodeCardProps> = ({episode}) =>{
   return (
     <div className={styles.episodeCard}>
       <h1>{episode.name}</h1>
