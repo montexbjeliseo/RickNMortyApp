@@ -32,3 +32,7 @@ export const ROUTES = {
     LOCATION: "/location/:id",
     LOCATIONS: "/locations",
 };
+
+export const URL_PARAMS = {
+    PAGE: 'page',
+}

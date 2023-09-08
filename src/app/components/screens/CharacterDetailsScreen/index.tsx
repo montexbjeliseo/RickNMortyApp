@@ -1,9 +1,12 @@
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useQuery } from "react-query";
-import { ENDPOINTS, QUERY_KEYS, ROUTES } from "../../../../constants";
+import { ENDPOINTS, QUERY_KEYS } from "../../../../constants";
 
 function CharacterDetailsScreen() {
+
+  const navigate = useNavigate();
+
   const { id } = useParams();
 
   const { isLoading, error, data } = useQuery({
@@ -13,6 +16,10 @@ function CharacterDetailsScreen() {
         (res) => res.json(),
       ),
   });
+
+  const goBack = ()=>{
+    navigate(-1);
+  }
 
   if (isLoading) {
     return (
@@ -35,7 +42,7 @@ function CharacterDetailsScreen() {
     <main>
       {data && (
         <>
-          <Link className={styles.backLink} to={ROUTES.CHARACTERS}>Volver atrás</Link>
+          <button className={styles.backLink} onClick={goBack}>Volver atrás</button>
           <h1>Personaje: {data.name}</h1>
           <img src={data.image} alt="" />
           <p>

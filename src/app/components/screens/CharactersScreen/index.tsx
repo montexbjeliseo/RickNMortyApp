@@ -4,7 +4,8 @@ import CharacterCard from "../../CharacterCard";
 import { Pagination } from "../../Pagination";
 import { useQuery } from "react-query";
 import { CharacterType } from "../../../types";
-import { ENDPOINTS, QUERY_KEYS } from "../../../../constants";
+import { ENDPOINTS, QUERY_KEYS, URL_PARAMS } from "../../../../constants";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type CharacterDataMemo = {
     results: CharacterType[];
@@ -12,7 +13,17 @@ type CharacterDataMemo = {
 };
 
 function CharactersScreen() {
-    const [currentPage, setCurrentPage] = useState(1);
+    const { search, pathname } = useLocation();
+
+    const pageParam = parseInt(
+        new URLSearchParams(search).get(URL_PARAMS.PAGE) as string
+    );
+
+    const [currentPage, setCurrentPage] = useState<number>(
+        !isNaN(pageParam) ? pageParam : 1
+    );
+
+    const navigate = useNavigate();
 
     const { data, isLoading, error } = useQuery({
         queryKey: [QUERY_KEYS.CHARACTERS_KEY + currentPage],
@@ -31,16 +42,20 @@ function CharactersScreen() {
     }, [data]);
 
     function onPrevious() {
-        setCurrentPage(Math.max(1, currentPage - 1));
+        const previousPage = Math.max(1, currentPage - 1);
+        setCurrentPage(previousPage);
+        navigate(`${pathname}?${URL_PARAMS.PAGE}=${previousPage}`);
     }
 
     function onNext() {
-        setCurrentPage(Math.min(dataMemo.info.pages, currentPage + 1));
-        console.log(currentPage);
+        const nextPage = Math.min(dataMemo.info.pages, currentPage + 1);
+        setCurrentPage(nextPage);
+        navigate(`${pathname}?${URL_PARAMS.PAGE}=${nextPage}`);
     }
 
     function onGoto(page: number) {
         setCurrentPage(page);
+        navigate(`${pathname}?${URL_PARAMS.PAGE}=${page}`);
     }
 
     if (isLoading) {
