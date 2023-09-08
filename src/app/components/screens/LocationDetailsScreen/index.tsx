@@ -1,18 +1,22 @@
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import styles from "./styles.module.css";
 import { useQuery } from "react-query";
-import { ENDPOINTS, QUERY_KEYS, ROUTES } from "../../../../constants";
-function PlaceDetailsScreen() {
+import { ENDPOINTS, QUERY_KEYS } from "../../../../constants";
+function LocationDetailsScreen() {
     const { id } = useParams();
 
     const { isLoading, error, data } = useQuery({
         queryKey: [QUERY_KEYS.LOCATION_KEY + id],
         queryFn: () =>
-            fetch(`${ENDPOINTS.LOCATION}${id}`).then(
-                (res) => res.json()
-            ),
+            fetch(`${ENDPOINTS.LOCATION}${id}`).then((res) => res.json()),
     });
+
+    const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1);
+    };
 
     if (isLoading) {
         return (
@@ -35,9 +39,9 @@ function PlaceDetailsScreen() {
         <main>
             {data && (
                 <>
-                    <Link className={styles.backLink} to={ROUTES.LOCATIONS}>
+                    <button className={styles.backLink} onClick={goBack}>
                         Volver atrás
-                    </Link>
+                    </button>
                     <h1>{data.name}</h1>
                     <p>
                         <strong>Dimension:</strong> {data.dimension}
@@ -54,4 +58,4 @@ function PlaceDetailsScreen() {
     );
 }
 
-export default PlaceDetailsScreen;
+export default LocationDetailsScreen;
