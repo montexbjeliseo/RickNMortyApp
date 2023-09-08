@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 type PaginationProps = {
   currentPage: number;
   pages: number;
-  onPreview: () => void;
+  onPrevious: () => void;
   onNext: () => void;
   onGoto: (page: number) => void;
 };
@@ -42,7 +42,7 @@ export const Pagination = (info: PaginationProps) => {
         <li>
           <a
             onClick={() => {
-              info.onPreview();
+              info.onPrevious();
             }}
           >
             Anterior

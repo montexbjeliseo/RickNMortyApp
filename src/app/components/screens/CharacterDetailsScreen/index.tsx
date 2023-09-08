@@ -1,21 +1,18 @@
 import { Link, useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useQuery } from "react-query";
+import { ENDPOINTS, QUERY_KEYS, ROUTES } from "../../../../constants";
 
 function CharacterDetailsScreen() {
   const { id } = useParams();
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['characterDetailsData'+id],
+    queryKey: [QUERY_KEYS.CHARACTER_KEY+id],
     queryFn: () =>
-      fetch(`https://rickandmortyapi.com/api/character/${id}`).then(
+      fetch(`${ENDPOINTS.CHARACTER}${id}`).then(
         (res) => res.json(),
       ),
   });
-
-  // const { data, error, loading } = useGetData(
-  //   `https://rickandmortyapi.com/api/character/${id}`
-  // );
 
   if (isLoading) {
     return (
@@ -34,13 +31,11 @@ function CharacterDetailsScreen() {
     );
   }
 
-  console.log(data, error, isLoading);
-
   return (
     <main>
       {data && (
         <>
-          <Link className={styles.backLink} to="/characters">Volver atrás</Link>
+          <Link className={styles.backLink} to={ROUTES.CHARACTERS}>Volver atrás</Link>
           <h1>Personaje: {data.name}</h1>
           <img src={data.image} alt="" />
           <p>

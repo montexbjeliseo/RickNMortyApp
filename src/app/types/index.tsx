@@ -18,3 +18,9 @@ export type EpisodeType = {
     episode: string;
     air_date: string;
 };
+
+export type LocationType = {
+    id: string;
+    name: string;
+    dimension: string;
+}

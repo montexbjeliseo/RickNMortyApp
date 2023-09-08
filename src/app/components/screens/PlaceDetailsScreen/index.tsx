@@ -2,20 +2,17 @@ import { Link, useParams } from "react-router-dom";
 
 import styles from "./styles.module.css";
 import { useQuery } from "react-query";
+import { ENDPOINTS, QUERY_KEYS, ROUTES } from "../../../../constants";
 function PlaceDetailsScreen() {
     const { id } = useParams();
 
     const { isLoading, error, data } = useQuery({
-        queryKey: ["placeDetailsData" + id],
+        queryKey: [QUERY_KEYS.LOCATION_KEY + id],
         queryFn: () =>
-            fetch(`https://rickandmortyapi.com/api/location/${id}`).then(
+            fetch(`${ENDPOINTS.LOCATION}${id}`).then(
                 (res) => res.json()
             ),
     });
-
-    // const { data, error, loading } = useGetData(
-    //   `https://rickandmortyapi.com/api/location/${id}`
-    // );
 
     if (isLoading) {
         return (
@@ -38,7 +35,7 @@ function PlaceDetailsScreen() {
         <main>
             {data && (
                 <>
-                    <Link className={styles.backLink} to="/places">
+                    <Link className={styles.backLink} to={ROUTES.LOCATIONS}>
                         Volver atrás
                     </Link>
                     <h1>{data.name}</h1>

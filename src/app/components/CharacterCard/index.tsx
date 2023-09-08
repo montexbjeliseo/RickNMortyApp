@@ -1,3 +1,4 @@
+import { ROUTES } from "../../../constants";
 import { CharacterType } from "../../types";
 import styles from "./styles.module.css";
 
@@ -26,7 +27,7 @@ function CharacterCard(props: CharacterProp) {
         <p>Origin: {props.character.origin.name}</p>
         <Link
           className={styles.learnMore}
-          to={`/characters/${props.character.id}`}
+          to={`${ROUTES.CHARACTER.replace(ROUTES.ID, props.character.id)}`}
         >
           Leer más
         </Link>

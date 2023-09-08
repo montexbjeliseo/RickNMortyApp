@@ -1,22 +1,19 @@
 import { useParams, Link } from "react-router-dom";
 import styles from "./styles.module.css"
 import { useQuery } from "react-query";
+import { ENDPOINTS, QUERY_KEYS, ROUTES } from "../../../../constants";
 
 
 function EpisodeDetailsScreen() {
   const { id } = useParams();
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['episodeDetailsData'+id],
+    queryKey: [QUERY_KEYS.EPISODE_KEY+id],
     queryFn: () =>
-      fetch(`https://rickandmortyapi.com/api/episode/${id}`).then(
+      fetch(`${ENDPOINTS.EPISODE}${id}`).then(
         (res) => res.json(),
       ),
   })
-
-  // const { data, error, loading } = useGetData(
-  //   `https://rickandmortyapi.com/api/episode/${id}`
-  // );
 
   if (isLoading) {
     return (
@@ -35,13 +32,11 @@ function EpisodeDetailsScreen() {
     );
   }
 
-  console.log(data, error, isLoading);
-
   return (
     <main>
       {data && (
         <>
-        <Link className={styles.backLink} to="/episodes">Volver atrás</Link>
+        <Link className={styles.backLink} to={ROUTES.EPISODES}>Volver atrás</Link>
           <h1>{data.name}</h1>
           <p>
             <b>Episodio:</b> {data.episode}

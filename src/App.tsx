@@ -9,6 +9,7 @@ import PlaceDetailsScreen from "./app/components/screens/PlaceDetailsScreen";
 import NotFound from "./app/components/screens/NotFound";
 import Layout from "./app/components/Layout";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ROUTES } from "./constants";
 
 const queryClient = new QueryClient();
 
@@ -18,19 +19,19 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<HomeScreen />}></Route>
-          <Route path="/characters" element={<CharactersScreen />}></Route>
-          <Route path="/episodes" element={<EpisodesScreen />}></Route>
-          <Route path="/places" element={<PlacesScreen />}></Route>
+          <Route path={ROUTES.HOME} element={<HomeScreen />}></Route>
+          <Route path={ROUTES.CHARACTERS} element={<CharactersScreen />}></Route>
+          <Route path={ROUTES.EPISODES} element={<EpisodesScreen />}></Route>
+          <Route path={ROUTES.LOCATIONS} element={<PlacesScreen />}></Route>
           <Route
-            path="/characters/:id"
+            path={ROUTES.CHARACTER}
             element={<CharacterDetailsScreen />}
           ></Route>
           <Route
-            path="/episodes/:id"
+            path={ROUTES.EPISODE}
             element={<EpisodeDetailsScreen />}
           ></Route>
-          <Route path="/places/:id" element={<PlaceDetailsScreen />}></Route>
+          <Route path={ROUTES.LOCATION} element={<PlaceDetailsScreen />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Route>
       </Routes>

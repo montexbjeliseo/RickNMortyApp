@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import styles from "./styles.module.css";
 import favicon from "../../../assets/favicon-32x32.png";
+import { ROUTES } from "../../../constants";
 
 function Navbar() {
 
@@ -20,17 +21,17 @@ function Navbar() {
           </Link>
         </li>
         <li className={endpoint === 'characters' ? styles.active : ""}>
-          <Link className={styles.navElement} to="/characters">
+          <Link className={styles.navElement} to={ROUTES.CHARACTERS}>
             Personajes
           </Link>
         </li>
         <li className={endpoint === 'episodes' ? styles.active : ""}>
-          <Link className={styles.navElement} to="/episodes">
+          <Link className={styles.navElement} to={ROUTES.EPISODES}>
             Episodios
           </Link>
         </li>
         <li className={endpoint === 'places' ? styles.active : ""}>
-          <Link className={styles.navElement} to="/places">
+          <Link className={styles.navElement} to={ROUTES.LOCATIONS}>
             Ubicaciones
           </Link>
         </li>
