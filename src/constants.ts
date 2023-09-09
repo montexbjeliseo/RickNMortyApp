@@ -22,6 +22,12 @@ export const ENDPOINTS = {
     LOCATIONS_PAGE: BASE_URL + "/location?page=",
 };
 
+export const RESOURCE_NAMES = {
+    CHARACTER: 'character',
+    EPISODE: 'episode',
+    LOCATION: 'location',
+}
+
 export const ROUTES = {
     HOME: "/",
     ID: ":id",
